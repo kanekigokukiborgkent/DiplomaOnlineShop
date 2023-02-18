@@ -1,6 +1,9 @@
-﻿
+﻿@*
 @{
     ViewData["Title"] = "Add produs nou";
+}*@
+@{
+    ViewData["Title"] = "Home Page";
 }
 <head>
     <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
@@ -27,16 +30,12 @@
                                 <input type="text" name="model" class="form-control" />
                             </div>
                             <div class="form-group">
-                                <label name="Company" class="control-label">Diagonala Ecranului</label>
-                                <input type="number" name="diagonala_ecranului" class="form-control" />
-                            </div>
-                             <div class="form-group">
-                                <label name="Company" class="control-label">Rezolutia Ecranului</label>
-                                <input type="text" name="rezolutia_ecranului" class="form-control" />
+                                <label name="Price" class="control-label">Pret</label>
+                                <input type="number" name="pret" class="form-control" />
                             </div>
                             <div class="form-group">
-                                <label name="Company" class="control-label">Dimensiuni</label>
-                                <input type="text" name="dimensiuni" class="form-control" />
+                                <label name="Company" class="control-label">Diagonala Ecranului</label>
+                                <input type="number" name="diagonala_ecranului" class="form-control" />
                             </div>
                             <div class="form-group">
                                 <label name="Price" class="control-label">Memorie Incorporată</label>
@@ -47,7 +46,7 @@
                                 <input type="number" name="RAM" class="form-control" />
                             </div>
                             <div class="form-group">
-                                <label name="Price" class="control-label">Camera Din Spate</label>
+                                <label name="Price" class="control-label">Camera Principală</label>
                                 <input type="number" name="camera_din_spate" class="form-control" /> 
                             </div>
                             <div class="form-group">
@@ -66,6 +65,14 @@
                                 <label name="Price" class="control-label">Culoare</label>
                                 <input type="text" name="culoare" class="form-control" />
                             </div>
+                             <div class="form-group">
+                                <label name="Company" class="control-label">Rezolutia Ecranului</label>
+                                <input type="text" name="rezolutia_ecranului" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label name="Company" class="control-label">Dimensiuni</label>
+                                <input type="text" name="dimensiuni" class="form-control" />
+                            </div>
                             <div class="form-group">
                                 <label name="Price" class="control-label">Materialul Carcasei</label>
                                 <input type="text" name="materialul_carcasei" class="form-control" />
@@ -74,16 +81,10 @@
                                 <label name="Price" class="control-label">Greutate</label>
                                 <input type="number" name="greutate" class="form-control" />
                             </div>
-                            <div class="form-group">
-                                <label name="Price" class="control-label">Pret</label>
-                                <input type="number" name="pret" class="form-control" />
-                            </div>
                            <br /> 
                             <div class="form-group ">
                                 <label class="control-label" for="uploadedFile">Incarca imaginea</label>
-
                                 <input type="file" name="uploadedFile" class="form-control " />
-
                             </div>
                         </div>
                         <div class="col-7 ml-5">
@@ -95,8 +96,6 @@
                             </div>
                         </div>
                     </div>
-
-
                     <button type="submit" class="login-button" style=""><i class="fa fa-chevron-right"></i></button>
 
                 </div>
