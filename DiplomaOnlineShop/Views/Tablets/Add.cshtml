@@ -1,0 +1,110 @@
+﻿
+@{
+    ViewData["Title"] = "Add produs nou";
+}
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="~/css/form.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
+</head>
+
+<div class=" container text-center">
+    <div class="login-form-1  p-4 text-center m-5" style="background-color:rgba(40,40,40,0.6);max-width:700px;min-width:500px">
+        <h2 class="text-white">Adauga produs nou</h2>
+        <form id="login-form" method="post" class="text-left " novalidate="novalidate" style=""
+              role="form" enctype="multipart/form-data">
+            <div class="main-login-form">
+                <div class="login-group">
+                    <div class="row justify-content-center">
+                        <div class="col-4 p-2 text-center">
+                            
+                            <div class="form-group">
+                                <label name="Name" class="control-label">Producător</label>
+                                <input type="text" name="producător" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label name="Name" class="control-label">Model</label>
+                                <input type="text" name="model" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label name="Company" class="control-label">Diagonala Ecranului</label>
+                                <input type="number" name="diagonala_ecranului" class="form-control" />
+                            </div>
+                             <div class="form-group">
+                                <label name="Company" class="control-label">Rezolutia Ecranului</label>
+                                <input type="text" name="rezolutia_ecranului" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label name="Company" class="control-label">Dimensiuni</label>
+                                <input type="text" name="dimensiuni" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label name="Price" class="control-label">Memorie Incorporată</label>
+                                <input type="number" name="memorie_incorporată" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label name="Price" class="control-label">RAM</label>
+                                <input type="number" name="RAM" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label name="Price" class="control-label">Camera Din Spate</label>
+                                <input type="number" name="camera_din_spate" class="form-control" /> 
+                            </div>
+                            <div class="form-group">
+                                <label name="Price" class="control-label">Camera Frontala</label>
+                                <input type="number" name="camera_frontala" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label name="Price" class="control-label">Capacitatea Bateriei</label>
+                                <input type="number" name="capacitatea_bateriei" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label name="Price" class="control-label">Garanție</label>
+                                <input type="number" name="garanție" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label name="Price" class="control-label">Culoare</label>
+                                <input type="text" name="culoare" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label name="Price" class="control-label">Materialul Carcasei</label>
+                                <input type="text" name="materialul_carcasei" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label name="Price" class="control-label">Greutate</label>
+                                <input type="number" name="greutate" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label name="Price" class="control-label">Pret</label>
+                                <input type="number" name="pret" class="form-control" />
+                            </div>
+                           <br /> 
+                            <div class="form-group ">
+                                <label class="control-label" for="uploadedFile">Incarca imaginea</label>
+
+                                <input type="file" name="uploadedFile" class="form-control " />
+
+                            </div>
+                        </div>
+                        <div class="col-7 ml-5">
+                            <div class="form-group">
+                                <label name="Desc" class="control-label">Descriere</label>
+
+                                <textarea class="form-control z-depth-1 border-bottom rounded" name="Desc"
+                                          id="exampleFormControlTextarea6" rows="8" placeholder="Adauga descrierea produsului..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <button type="submit" class="login-button" style=""><i class="fa fa-chevron-right"></i></button>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+ 

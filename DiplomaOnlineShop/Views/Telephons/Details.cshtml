@@ -1,0 +1,48 @@
+﻿
+@model Telephones
+
+@{
+    ViewData["Title"] = "Detalii Produs";
+}
+@{string denumire = Model.Path + "" + Model.Img;}
+<div style="        margin: 100px; 
+        padding: 10px;
+       background-color:rgba(45,45,45,0.7);
+       
+        min-height: 100px;
+        padding: 75px;
+        border-radius: 20px 20px;
+        
+">
+    <div class="row mt-5 " style="        color: white;
+        min-height: 100px;
+        min-width: 100px;
+        font-family: 'Roboto', sans-serif;
+    ">
+
+
+        @{ <div class="col-lg-6">
+               
+
+                <img class="img-thumbnail" src="@denumire" alt="@Model.model" />
+                
+            </div>
+        }
+        @{ <div class="col-lg-6">
+                <h2 class="text-center">  @Model.model</h2>
+
+               
+                <p class="text-center">Compania producator: @Model.producător</p>
+                <p class="text-center">@Model.culoare</p>
+                <p class="text-center" style="font-size:20px">
+                    Pretul jocului: @Model.pret &#128;
+                </p>
+                <p class="text-center">
+                    <a class="btn btn-danger text-white" href="~/Cos/Add/@Model.Id"> Cumpara</a>
+                    <a class="btn btn-danger text-white" href="~/Visitator/Index"> Meniu</a>
+                </p>
+            </div>
+        }
+
+    </div>
+</div>
