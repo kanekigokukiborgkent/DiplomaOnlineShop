@@ -5,16 +5,42 @@
 <html>
 <head>
     <title>My Online Shop</title>
-    
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        .example {
+            margin: 1em 0;
+            text-align: center;
+        }
+
+            .example img {
+                width: 30vw;
+                height: 30vw;
+            }
+
+        .example-cover img {
+            object-fit: cover;
+        }
+
+        .example-contain img {
+            object-fit: contain;
+        }
+    </style>
 </head>
 <body>
+    
+    
 
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="Telephons" asp-action="Index">Telephons</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="Tablets" asp-action="Index">Tablets</a>
-    </li>
+
+
+   <div class="float-parent-element">
+  <div class="float-child-element">
+            <div class="red"> <a class="nav-link text-dark" asp-area="" asp-controller="Telephons" asp-action="Index">Telephons</a></div>
+  </div>
+  <div class="float-child-element">
+            <div class="yellow"> <a class="nav-link text-dark" asp-area="" asp-controller="Tablets" asp-action="Index">Tablets</a></div>
+  </div>
+</div>
+    
 
 </body>
 </html>

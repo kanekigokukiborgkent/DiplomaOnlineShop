@@ -1,48 +1,51 @@
-﻿
-@model Tablets
-
+﻿@model Tablets
 @{
     ViewData["Title"] = "Detalii Produs";
 }
 @{string denumire = Model.Path + "" + Model.Img;}
-<div style="        margin: 100px; 
+<div style="       
+        margin: 100px; 
         padding: 10px;
-       background-color:rgba(45,45,45,0.7);
+       background-image: linear-gradient(to right, #46b680 , #347392);
+
        
         min-height: 100px;
         padding: 75px;
         border-radius: 20px 20px;
-        
 ">
-    <div class="row mt-5 " style="        color: white;
+    <div class="row mt-5 " style="       
+        color: white;
         min-height: 100px;
         min-width: 100px;
         font-family: 'Roboto', sans-serif;
     ">
-
-
         @{ <div class="col-lg-6">
-               
-
                 <img class="img-thumbnail" src="@denumire" alt="@Model.model" />
-                
             </div>
         }
         @{ <div class="col-lg-6">
                 <h2 class="text-center">  @Model.model</h2>
-
-               
                 <p class="text-center">Compania producator: @Model.producător</p>
-                <p class="text-center">@Model.culoare</p>
-                <p class="text-center" style="font-size:20px">
-                    Pretul jocului: @Model.pret &#128;
-                </p>
+                <p class="text-center">Diagonala ecranului: @Model.diagonala_ecranului</p>
+                <p class="text-center">Rezolutia ecranului: @Model.rezolutia_ecranului</p>
+                <p class="text-center">Memorie incorporată: @Model.memorie_incorporată</p>
+                <p class="text-center">RAM: @Model.RAM</p>
+                <p class="text-center">Camera din spate: @Model.camera_din_spate</p>
+                <p class="text-center">Camera frontala: @Model.camera_frontala</p>
+                <p class="text-center">Capacitatea bateriei: @Model.capacitatea_bateriei</p>
+                <p class="text-center">Garanție: @Model.garanție</p>
+                <p class="text-center">Materialul carcasei: @Model.materialul_carcasei</p>
+                <p class="text-center">Dimensiuni: @Model.dimensiuni</p>
+                <p class="text-center">Greutate: @Model.greutate</p>
+                <p class="text-center">Culoare: @Model.culoare</p>
+                <h1 class="text-center" style="font-size:20px"> Pret: @Model.pret &#128; </h1>
+
                 <p class="text-center">
-                    <a class="btn btn-danger text-white" href="~/Cos/Add/@Model.Id"> Cumpara</a>
-                    <a class="btn btn-danger text-white" href="~/Visitator/Index"> Meniu</a>
+                    <a class="btn btn-danger text-white" href="~/Home/Index"> Meniu</a>
+                    <a class="btn btn-danger text-white" href="~/Tablets/Modifica/@Model.Id"> Modifica</a>
+                    <a class="btn btn-danger text-white" href="~/Tablets/Delete/@Model.Id"> Sterge</a>                   
                 </p>
             </div>
         }
-
     </div>
 </div>
