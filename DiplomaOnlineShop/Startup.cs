@@ -48,6 +48,7 @@ namespace DiplomaOnlineShop
         // добавляем контекст MobileContext в качестве сервиса в приложение
         services.AddDbContext<ProductContext>(options =>
                 options.UseSqlServer(connection));
+
             services.AddControllersWithViews();
         }
 

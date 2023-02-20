@@ -1,4 +1,10 @@
-﻿@* <style>
+﻿@model IEnumerable<DiplomaOnlineShop.Models.Telephones>
+@{
+    ViewData["Title"] = "Telephons";
+}
+ 
+
+ <style>
 html {
   box-sizing: border-box;
 }
@@ -49,12 +55,35 @@ html {
 .button:hover {
   background-color: #555;
 }
-</style>*@
-@model IEnumerable<DiplomaOnlineShop.Models.Telephones>
-@{
-    ViewData["Title"] = "Home Page";
-}
- 
+
+
+
+
+    .example {
+        margin: 1em 0;
+        text-align: center;
+    }
+
+        .example img {
+            width: 10vw;
+            height: 20vw;
+        }
+
+ /*   .example-cover img {
+        object-fit: cover;
+    }
+*/
+   /* .example-contain img {
+        object-fit: contain;
+    }*/
+</style>
+@*
+<div class="example example-cover">
+    <img src="https://i.stack.imgur.com/B0EAo.png">
+    <img src="https://i.stack.imgur.com/iYkNH.png">
+    <img src="https://i.stack.imgur.com/gne9N.png">
+</div>
+ style="float: left; width: 100px; height: 100px; object-fit: cover;"  class="img-thumbnail"*@
 
 <p class="text-white font-weight-bold " style="text-align:center;font-size:40px">Colectia de produse</p>
 <div class="row mt-5 mt-2">
@@ -67,18 +96,18 @@ html {
                     @{
                         string denumire = p.Path + "" + p.Img;
                     }
-                    <a class="btn btn-dark" href="~/Show/@p.Id">
-                        <img class="img-thumbnail" src="@denumire" />
+                    <a class="example example-cover" href="~/Show/@p.Id">
+                        <img src="@denumire" />
                         @*<img width="25" height="25" src="~/index/icons/view-details.png" style="filter:invert(1)" />*@
                     </a>
                     <div class=" text-center mt-2"><p> &euro;@p.pret </p></div>
                     <div class="container text-secondary text-center" style="">
                         <p> @p.model </p> </div>
-                    @* <div class="float-right overflow-auto">
-                        <a class="btn btn-dark" href="~/Administrator/Show/@p.Id">
-                           <img width="25" height="25" src="~/index/icons/view-details.png" style="filter:invert(1)" />
+                     <div class="float-right overflow-auto">
+                        <a class="btn btn-dark" href="~/Telephons/Details/@p.Id">
+                           <img width="30" height="30" border-radius="50%" src="~/ShowDetail.png" />
                         </a>
-                    </div>*@
+                    </div>
                 </div>
 
             </div>

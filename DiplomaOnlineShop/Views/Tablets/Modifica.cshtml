@@ -1,0 +1,109 @@
+﻿@model Tablets
+@{
+    ViewData["Title"] = "Modifica produsul";
+}
+<head>
+    <title>Change</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="stel.css" />
+</head>
+<h2 style="color:white" class="text-center">#Modifica produsul</h2>
+<body class="bd-light" style="background-color: #333;">
+    <div style="border:5px solid black;border-radius:10px;max-width:600px;background-color:white;min-width:400px;margin-left:21%">
+        <form method="post" class="form-signin" style="width: 100%; max-width: 300px; padding: 15px; margin: 0 auto;" role="form" enctype="multipart/form-data">
+            <p> #Completeaza:</p>
+
+            <div class="text-center">
+                <label for="producător">Producător:</label>
+                <input type="text" class="form-control" style="border:3px solid black" name="producător" placeholder="" value="" required="">
+            </div>
+
+            <div class="text-center">
+                <label for="model">Model:</label>
+                <input type="text" class="form-control" style="border:3px solid black" name="model" placeholder="" value="" required="">
+            </div>
+
+             <div class=" text-center">
+                <label for="Desc">Descriere:</label>
+                <input type="text" name="Desc" class="form-control" style="border:3px solid black" />
+            </div>
+ 
+            <div class=" text-center">
+                <label for="price">Pret:</label>
+                <input type="number" name="pret" class="form-control" style="border:3px solid black" />
+            </div>
+            
+            <div class=" text-center">
+                <label for="price">Diagonala ecranului:</label>
+                <input type="number" name="diagonala_ecranului" class="form-control" style="border:3px solid black" />
+            </div>
+            
+            <div class=" text-center">
+                <label for="price">Rezolutia ecranului:</label>
+                <input type="number" name="rezolutia_ecranului" class="form-control" style="border:3px solid black" />
+            </div>
+            
+            <div class=" text-center">
+                <label for="price">Memorie incorporată:</label>
+                <input type="number" name="memorie_incorporată" class="form-control" style="border:3px solid black" />
+            </div>
+            
+            <div class=" text-center">
+                <label for="price">RAM:</label>
+                <input type="number" name="RAM" class="form-control" style="border:3px solid black" />
+            </div>
+            
+            <div class=" text-center">
+                <label for="price">Camera frontala:</label>
+                <input type="number" name="camera_frontala" class="form-control" style="border:3px solid black" />
+            </div>
+            
+            <div class=" text-center">
+                <label for="price">Camera din spate:</label>
+                <input type="number" name="camera_din_spate" class="form-control" style="border:3px solid black" />
+            </div>
+            
+            <div class=" text-center">
+                <label for="price">Capacitatea bateriei:</label>
+                <input type="number" name="capacitatea_bateriei" class="form-control" style="border:3px solid black" />
+            </div>
+            
+            <div class=" text-center">
+                <label for="price">Garanție:</label>
+                <input type="number" name="garanție" class="form-control" style="border:3px solid black" />
+            </div>
+            
+            <div class=" text-center">
+                <label for="price">Materialul carcasei:</label>
+                <input type="number" name="materialul_carcasei" class="form-control" style="border:3px solid black" />
+            </div>
+            
+            <div class=" text-center">
+                <label for="price">Dimensiuni:</label>
+                <input type="number" name="dimensiuni" class="form-control" style="border:3px solid black" />
+            </div>
+            
+            <div class=" text-center">
+                <label for="price">Greutate:</label>
+                <input type="number" name="greutate" class="form-control" style="border:3px solid black" />
+            </div>
+            
+            <div class=" text-center">
+                <label for="price">Culoare:</label>
+                <input type="number" name="culoare" class="form-control" style="border:3px solid black" />
+            </div>
+            
+             <div class="form-group text-center">
+                <label for="uploadedFile">Incarca imaginea</label>
+                <input type="file" name="uploadedFile" class="form-control" style="border:3px solid black" />
+            </div>
+
+            <div class="form-group text-center">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-warning" value="Trimite" />
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+ 
