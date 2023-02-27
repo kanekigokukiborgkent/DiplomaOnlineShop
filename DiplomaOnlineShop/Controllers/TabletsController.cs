@@ -83,7 +83,7 @@ namespace DiplomaOnlineShop.Controllers
         }
         
          
-        [HttpPost]// Modificarea produs
+        [HttpPost]
         public async Task<IActionResult> Modifica(IFormFile uploadedFile, Tablets produs, int id)
         {
                 if (uploadedFile != null)
@@ -147,7 +147,7 @@ namespace DiplomaOnlineShop.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult Details(int id)// Detaliile la un anumit produs
+        public IActionResult Details(int id)
         {
             ViewModel obj = new ViewModel();
             obj.viewTablets = db.tablets.ToList();

@@ -23,36 +23,24 @@ namespace DiplomaOnlineShop
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // получаем строку подключения из файла конфигурации
             string connection = Configuration.GetConnectionString("DefaultConnection");
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-              .AddCookie(options => //CookieAuthenticationOptions
+              .AddCookie(options => 
               {
                   options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Home/Index");
               });
             services.AddControllersWithViews();
-          /*  services.AddControllers()
-                  .AddNewtonsoftJson(options =>
-                  {
-                      // Use the default property (Pascal) casing
-                      options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-                      options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-                  });*/
-
-        
-
-        // добавляем контекст MobileContext в качестве сервиса в приложениеservices.AddDbContext<ProductContext>(options =>
+ 
+        services.AddDbContext<ProductContext>(options =>
                 options.UseSqlServer(connection));
         
 
             services.AddControllersWithViews();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -62,7 +50,7 @@ namespace DiplomaOnlineShop
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+          
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
