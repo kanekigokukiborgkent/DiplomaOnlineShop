@@ -121,7 +121,6 @@ namespace DiplomaOnlineShop.Controllers
             ViewBag.ProdusId = id;
             Telephones obj = new Telephones();
             obj = db.telephones.FirstOrDefault(u => u.Id == id);
-
             return View(obj);
         }
 
@@ -140,7 +139,6 @@ namespace DiplomaOnlineShop.Controllers
             Telephones A = new Telephones();
             A = obj.viewTelephones.FirstOrDefault(x => x.Id == id);
             db.telephones.Remove(A);
-
             db.SaveChanges();
             return RedirectToAction("Index");
         }
