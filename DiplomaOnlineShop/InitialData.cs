@@ -24,18 +24,7 @@ namespace DiplomaOnlineShop
             new User {login="nicu", password="12345"}
           };
 
-      /*  public static Dictionary<string, Telephones> DicTelephones
-        {
-            get
-            {
-                Dictionary<string, Telephones> dic = new Dictionary<string, Telephones>();
-                foreach (var el in telephones)
-                    dic.Add(el.producător, el);
-
-                return dic;
-            }
-        }*/
-
+     
         public static List<Tablets> tablets = new List<Tablets>
         {
             new Tablets {producător = "Xiaomi", model="Smart Tab M8",        pret = 3000, diagonala_ecranului = 12, rezolutia_ecranului = "2560x1300", memorie_incorporată = 128, RAM = 6, camera_din_spate = 13, camera_frontala = 8, capacitatea_bateriei = 8720, garanție = 24, materialul_carcasei = "aluminiu", dimensiuni = "254,6x166,2x1,4", greutate = 511, culoare = "Gri", Img ="tablet1.PNG", Path="/img/Produse/Tablets/" },

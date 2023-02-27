@@ -3,7 +3,6 @@
     ViewData["Title"] = "Tablets";
 }
 
-
 <style>
     html {
         box-sizing: border-box;
@@ -19,8 +18,6 @@
         margin-bottom: 16px;
         padding: 0 8px;
     }
-
-
 
     .card {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -56,9 +53,6 @@
             background-color: #555;
         }
 
-
-
-
     .example {
         margin: 1em 0;
         text-align: center;
@@ -69,21 +63,7 @@
             height: 20vw;
         }
 
-    /*   .example-cover img {
-            object-fit: cover;
-        }
-    */
-    /* .example-contain img {
-            object-fit: contain;
-        }*/
 </style>
-@*
-<div class="example example-cover">
-    <img src="https://i.stack.imgur.com/B0EAo.png">
-    <img src="https://i.stack.imgur.com/iYkNH.png">
-    <img src="https://i.stack.imgur.com/gne9N.png">
-</div>
- style="float: left; width: 100px; height: 100px; object-fit: cover;"  class="img-thumbnail"*@
 
 <p class="text-white font-weight-bold " style="text-align:center;font-size:40px">Colectia de produse</p>
 <div class="row mt-5 mt-2">
@@ -98,16 +78,16 @@
                     }
                     <a class="example example-cover" href="~/Show/@p.Id">
                         <img src="@denumire" />
-                        @*<img width="25" height="25" src="~/index/icons/view-details.png" style="filter:invert(1)" />*@
                     </a>
                     <div class=" text-center mt-2"><p> &euro;@p.pret </p></div>
                     <div class="container text-secondary text-center" style="">
                         <p> @p.model </p>
                     </div>
                     <div class="float-right overflow-auto">
-                        <a class="btn btn-dark" href="~/CosProd/Add?id=@p.Id&&typeProduct=0"> </a>
+                        <a class="btn btn-dark" href="~/CosProd/Add?id=@p.Id&&typeProduct=0">
+                         <img width="30" height="30" border-radius="50%" src="~/addCart.png" />
+                         </a>
                            
-                       
                     </div>
                     <div class="float-right overflow-auto">
                         <a class="btn btn-dark" href="~/Telephons/Details/@p.Id">
