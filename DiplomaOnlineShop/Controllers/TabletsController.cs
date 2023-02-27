@@ -76,18 +76,12 @@ namespace DiplomaOnlineShop.Controllers
         }
 
 
-       
-
-        public IActionResult Details(int id)// Detaliile la un anumit produs
+        [HttpGet]
+        public IActionResult Add()
         {
-            ViewModel obj = new ViewModel();
-            obj.viewTablets = db.tablets.ToList();
-
-            Tablets v = new Tablets();
-            v = obj.viewTablets.FirstOrDefault(x => x.Id == id);
-            return View(v);
+            return View();
         }
-
+        
          
         [HttpPost]// Modificarea produs
         public async Task<IActionResult> Modifica(IFormFile uploadedFile, Tablets produs, int id)
@@ -140,11 +134,6 @@ namespace DiplomaOnlineShop.Controllers
             return View(obj);
         }
 
-        [HttpGet]
-        public IActionResult Add()
-        {
-            return View();
-        }
 
         [HttpGet]
         public IActionResult Delete(int id)
@@ -156,6 +145,16 @@ namespace DiplomaOnlineShop.Controllers
             db.tablets.Remove(A);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public IActionResult Details(int id)// Detaliile la un anumit produs
+        {
+            ViewModel obj = new ViewModel();
+            obj.viewTablets = db.tablets.ToList();
+
+            Tablets v = new Tablets();
+            v = obj.viewTablets.FirstOrDefault(x => x.Id == id);
+            return View(v);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
