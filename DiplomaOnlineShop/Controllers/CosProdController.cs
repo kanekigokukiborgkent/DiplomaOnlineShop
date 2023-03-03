@@ -21,7 +21,7 @@ namespace Magazin.Controllers
         IWebHostEnvironment appEnvironment;
 
         static public List<Telephones> telephones = new List<Telephones>();
-        static public List<Tablets> tablets = new List<Tablets>();
+        static public List<Products> tablets = new List<Products>();
 
         public CosProdController(ProductContext context, ILogger<HomeController> logger, IWebHostEnvironment _appEnvironment)
         {
@@ -41,7 +41,7 @@ namespace Magazin.Controllers
             }
             else if (typeProduct == 0)
             {
-                Tablets obj = new();
+                Products obj = new();
                 obj = db.tablets.FirstOrDefault(u => u.Id == id);
                 tablets.Add(obj);
             }
@@ -60,7 +60,7 @@ namespace Magazin.Controllers
         {
             if (id == null) return RedirectToAction("Index", "CosProd");
             if (typeProduct == 0) {
-                 Tablets obj = new();
+                 Products obj = new();
                 obj = tablets.FirstOrDefault(u => u.Id == id);
                 tablets.Remove(obj);
                 return RedirectToAction("Index", "CosProd");

@@ -8,8 +8,8 @@ namespace DiplomaOnlineShop.Models
 {
     public class ProductContext :DbContext
     {
-        public DbSet<Telephones> telephones{ get; set; }
-        public DbSet<Tablets> tablets{ get; set; }
+        /*public DbSet<Telephones> telephones{ get; set; }*/
+        public DbSet<Products> products{ get; set; }
         public DbSet<User> users{ get; set; }
          public ProductContext(DbContextOptions<ProductContext> options)
              : base(options)
