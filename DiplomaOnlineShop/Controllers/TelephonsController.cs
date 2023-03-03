@@ -1,4 +1,4 @@
-﻿using DiplomaOnlineShop.Models;
+﻿/*using DiplomaOnlineShop.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -150,3 +150,4 @@ namespace DiplomaOnlineShop.Controllers
         }
     }
 }
+*/

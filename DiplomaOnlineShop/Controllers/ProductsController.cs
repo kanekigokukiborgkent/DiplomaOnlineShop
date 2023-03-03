@@ -14,14 +14,14 @@ using static System.Net.WebRequestMethods;
 
 namespace DiplomaOnlineShop.Controllers
 {
-    public class TabletsController : Controller
+    public class ProductsController : Controller
     {
         ProductContext db;
 
         private readonly ILogger<HomeController> _logger;
         IWebHostEnvironment appEnvironment;
 
-        public TabletsController(ProductContext context, ILogger<HomeController> logger, IWebHostEnvironment _appEnvironment)
+        public ProductsController(ProductContext context, ILogger<HomeController> logger, IWebHostEnvironment _appEnvironment)
         {
             db = context;
             _logger = logger;
@@ -30,12 +30,12 @@ namespace DiplomaOnlineShop.Controllers
 
         public IActionResult Index()
         {
-            var rez = db.tablets.ToList();
+            var rez = db.products.ToList();
             return View(rez);
         }
 
         [HttpPost]// Adaugarea Produs in BD
-        public async Task<IActionResult> Add(IFormFile uploadedFile, Tablets produs)
+        public async Task<IActionResult> Add(IFormFile uploadedFile, Products produs)
         {
             if (uploadedFile != null)
             {
@@ -47,8 +47,8 @@ namespace DiplomaOnlineShop.Controllers
                 }
                 string way = "/img/Produse/Tablets/";
 
-                Tablets file = new Tablets { Img = uploadedFile.FileName, Path = way };
-                Tablets obj = new Tablets
+                Products file = new Products { Img = uploadedFile.FileName, Path = way };
+                Products obj = new Products
                 {
                     producător = produs.producător,
                     model = produs.model,
@@ -66,9 +66,10 @@ namespace DiplomaOnlineShop.Controllers
                     capacitatea_bateriei = produs.capacitatea_bateriei,
                     greutate = produs.greutate,
                     garanție = produs.garanție,
-                    culoare = produs.culoare
+                    culoare = produs.culoare,
+                    category = produs.category
                 };
-                db.tablets.Add(obj);
+                db.products.Add(obj);
                 db.SaveChanges();
             }
             return RedirectToAction("Index");
@@ -84,7 +85,7 @@ namespace DiplomaOnlineShop.Controllers
         
          
         [HttpPost]
-        public async Task<IActionResult> Modifica(IFormFile uploadedFile, Tablets produs, int id)
+        public async Task<IActionResult> Modifica(IFormFile uploadedFile, Products produs, int id)
         {
                 if (uploadedFile != null)
                 {
@@ -96,7 +97,7 @@ namespace DiplomaOnlineShop.Controllers
                     }
                     string way = "/img/Produse/Tablets/";
 
-                    Tablets obj = new Tablets
+                    Products obj = new Products
                     {
                         producător = produs.producător,
                         model = produs.model,  
@@ -114,11 +115,12 @@ namespace DiplomaOnlineShop.Controllers
                         capacitatea_bateriei = produs.capacitatea_bateriei,
                         greutate = produs.greutate,
                         garanție = produs.garanție,
-                        culoare = produs.culoare
+                        culoare = produs.culoare,
+                        category = produs.category
                     };
-                    Tablets ob2 = db.tablets.Where(s => s.Id == produs.Id).FirstOrDefault();
-                    db.tablets.Remove(ob2);
-                    db.tablets.Add(obj);
+                    Products ob2 = db.products.Where(s => s.Id == produs.Id).FirstOrDefault();
+                    db.products.Remove(ob2);
+                    db.products.Add(obj);
                     db.SaveChanges();
                 }
              return RedirectToAction("Index");
@@ -129,8 +131,8 @@ namespace DiplomaOnlineShop.Controllers
         {
             if (id == null) return RedirectToAction("Index");
              ViewBag.ProdusId = id;
-            Tablets obj = new Tablets();
-            obj = db.tablets.FirstOrDefault(u => u.Id == id);
+            Products obj = new Products();
+            obj = db.products.FirstOrDefault(u => u.Id == id);
             return View(obj);
         }
 
@@ -139,10 +141,10 @@ namespace DiplomaOnlineShop.Controllers
         public IActionResult Delete(int id)
         {
             ViewModel obj = new ViewModel();
-            obj.viewTablets = db.tablets.ToList();
-            Tablets A = new Tablets();
+            obj.viewTablets = db.products.ToList();
+            Products A = new Products();
             A = obj.viewTablets.FirstOrDefault(x => x.Id == id);
-            db.tablets.Remove(A);
+            db.products.Remove(A);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -150,9 +152,9 @@ namespace DiplomaOnlineShop.Controllers
         public IActionResult Details(int id)
         {
             ViewModel obj = new ViewModel();
-            obj.viewTablets = db.tablets.ToList();
+            obj.viewTablets = db.products.ToList();
 
-            Tablets v = new Tablets();
+            Products v = new Products();
             v = obj.viewTablets.FirstOrDefault(x => x.Id == id);
             return View(v);
         }
