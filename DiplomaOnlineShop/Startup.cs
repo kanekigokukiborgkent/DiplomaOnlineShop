@@ -30,7 +30,7 @@ namespace DiplomaOnlineShop
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
               .AddCookie(options => 
               {
-                  options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Home/Index");
+                  options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Products/Index");
               });
             services.AddControllersWithViews();
  

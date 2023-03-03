@@ -20,8 +20,8 @@ namespace Magazin.Controllers
         private readonly ILogger<HomeController> _logger;
         IWebHostEnvironment appEnvironment;
 
-        static public List<Telephones> telephones = new List<Telephones>();
-        static public List<Products> tablets = new List<Products>();
+       /* static public List<Telephones> telephones = new List<Telephones>();*/
+        static public List<Products> products = new List<Products>();
 
         public CosProdController(ProductContext context, ILogger<HomeController> logger, IWebHostEnvironment _appEnvironment)
         {
@@ -33,17 +33,17 @@ namespace Magazin.Controllers
         public IActionResult Add(int? id, int typeProduct)
         {
             if (id == null) return RedirectToAction("Index", "Home");
-            if (typeProduct == 1)
+         /*   if (typeProduct == 1)
             {
                 Telephones obj = new();
                 obj = db.telephones.FirstOrDefault(u => u.Id == id);
                 telephones.Add(obj);
             }
-            else if (typeProduct == 0)
+            else */if (typeProduct == 0)
             {
                 Products obj = new();
-                obj = db.tablets.FirstOrDefault(u => u.Id == id);
-                tablets.Add(obj);
+                obj = db.products.FirstOrDefault(u => u.Id == id);
+                products.Add(obj);
             }
 
             return RedirectToAction("Index", "Home");
@@ -52,8 +52,8 @@ namespace Magazin.Controllers
        public IActionResult Index()
         {
             Device device = new Device();
-            device.telephones = telephones;
-            device.tablets = tablets;
+          /*  device.telephones = telephones;*/
+            device.products = products;
             return View(device);
         }
         public IActionResult Delete(int? id, int typeProduct)
@@ -61,16 +61,16 @@ namespace Magazin.Controllers
             if (id == null) return RedirectToAction("Index", "CosProd");
             if (typeProduct == 0) {
                  Products obj = new();
-                obj = tablets.FirstOrDefault(u => u.Id == id);
-                tablets.Remove(obj);
+                obj = products.FirstOrDefault(u => u.Id == id);
+                products.Remove(obj);
                 return RedirectToAction("Index", "CosProd");
             }
-            else if (typeProduct == 1) {
+          /*  else if (typeProduct == 1) {
                 Telephones obj = new();
                 obj = telephones.FirstOrDefault(u => u.Id == id);
                 telephones.Remove(obj);
                 return RedirectToAction("Index", "CosProd");
-            }
+            }*/
             return RedirectToAction("Index", "CosProd");
         }
     }

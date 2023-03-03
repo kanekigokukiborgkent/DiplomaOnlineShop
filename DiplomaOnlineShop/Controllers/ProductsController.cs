@@ -61,10 +61,7 @@ namespace DiplomaOnlineShop.Controllers
                     camera_din_spate = produs.camera_din_spate,
                     rezolutia_ecranului = produs.rezolutia_ecranului,
                     camera_frontala = produs.camera_frontala,
-                    materialul_carcasei = produs.materialul_carcasei,
-                    dimensiuni = produs.dimensiuni,
                     capacitatea_bateriei = produs.capacitatea_bateriei,
-                    greutate = produs.greutate,
                     garanție = produs.garanție,
                     culoare = produs.culoare,
                     category = produs.category
@@ -110,10 +107,7 @@ namespace DiplomaOnlineShop.Controllers
                         camera_din_spate = produs.camera_din_spate,
                         rezolutia_ecranului = produs.rezolutia_ecranului,
                         camera_frontala = produs.camera_frontala,
-                        materialul_carcasei = produs.materialul_carcasei,
-                        dimensiuni = produs.dimensiuni,
                         capacitatea_bateriei = produs.capacitatea_bateriei,
-                        greutate = produs.greutate,
                         garanție = produs.garanție,
                         culoare = produs.culoare,
                         category = produs.category
@@ -141,9 +135,9 @@ namespace DiplomaOnlineShop.Controllers
         public IActionResult Delete(int id)
         {
             ViewModel obj = new ViewModel();
-            obj.viewTablets = db.products.ToList();
+            obj.viewProducts = db.products.ToList();
             Products A = new Products();
-            A = obj.viewTablets.FirstOrDefault(x => x.Id == id);
+            A = obj.viewProducts.FirstOrDefault(x => x.Id == id);
             db.products.Remove(A);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -152,10 +146,10 @@ namespace DiplomaOnlineShop.Controllers
         public IActionResult Details(int id)
         {
             ViewModel obj = new ViewModel();
-            obj.viewTablets = db.products.ToList();
+            obj.viewProducts = db.products.ToList();
 
             Products v = new Products();
-            v = obj.viewTablets.FirstOrDefault(x => x.Id == id);
+            v = obj.viewProducts.FirstOrDefault(x => x.Id == id);
             return View(v);
         }
 

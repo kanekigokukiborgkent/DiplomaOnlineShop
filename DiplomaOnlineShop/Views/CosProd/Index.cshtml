@@ -19,9 +19,9 @@
                 </div><div></div>
                
                 @{
-                    if (Model.telephones.Any())
+                    if (Model.products.Any())
                     {
-                        foreach (var p in Model.telephones)
+                        foreach (var p in Model.products)
                         {
                            
                             string cale = p.Path + "" + p.Img;
@@ -44,29 +44,6 @@
                                 </div>
 
                             </div>
-
-
-                        }
-                    }
-                    if (Model.tablets.Any()){
-                        foreach (var p in Model.tablets)
-                        {
-                            string cale = p.Path + "" + p.Img;
-                            <div class="row m-2 justify-content-around" style="max-height:120px">
-                                <div class="col-2 ">
-                                    <img class="w-100 h-100" src="@cale" />
-                                </div>
-                                <div class="col-6 text-center ">
-                                    <h5 class="text-white text-center">@p.model</h5>
-                                    <p class="text-center text-secondary">@p.producător</p>
-                                </div>
-                                <div class="col-2 text-center text-white">
-                                    <p>&euro; @p.pret</p>
-                                </div>
-                                <div class="col-2 text-right text-white">
-                                    <a href="~/CosProd/delete?id=@p.Id&&typeProduct=0" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='gray'"> &#10005;</a>
-                                </div>
-                            </div>
                         }
                     }
                     else
@@ -83,6 +60,5 @@
             </div>
         </div>
     </div>
-
 </div>
 
