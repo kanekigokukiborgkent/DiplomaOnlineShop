@@ -58,21 +58,21 @@
         text-align: center;
     }
 
-        .example img {
+       /* .example img {
             width: 15vw;
             height: 20vw;
-        }
+        }*/
 
 </style>
 
 <p class="text-white font-weight-bold " style="text-align:center;font-size:40px">Colectia de produse</p>
 <div class="row mt-5 mt-2">
     @{
-        foreach (var p in Model)
+        foreach (var p in Model.Where(x=>x.category == "phone"))
         {
             <div class="col-lg-4 mt-3  pb-5" style="">
 
-                <div class=" text-dark p-3 pb-5" style="background-color: rgba(255, 255, 255,0.7); border-radius: 13px; ">
+                <div class=" text-dark p-3 pb-5" style="background-color: rgba(255, 255, 255,0.7); border-radius: 13px; width: 13vw; height: 20vw; ">
                     @{
                         string denumire = p.Path + "" + p.Img;
                     }
@@ -88,6 +88,36 @@
                          <img width="30" height="30" border-radius="50%" src="~/addCart.png" />
                          </a>
                            
+                    </div>
+                    <div class="float-right overflow-auto">
+                        <a class="btn btn-dark" href="~/Products/Details/@p.Id">
+                            <img width="30" height="30" border-radius="50%" src="~/ShowDetail.png" />
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        }
+        foreach (var p in Model.Where(x => x.category == "tablet"))
+        {
+            <div class="col-lg-4 mt-3  pb-5" style="">
+
+                <div class=" text-dark p-3 pb-5" style="background-color: rgba(255, 255, 255,0.7); border-radius: 13px; width: 15vw; height: 20vw; ">
+                    @{
+                        string denumire = p.Path + "" + p.Img;
+                    }
+                    <a class="example example-cover" href="~/Show/@p.Id">
+                        <img src="@denumire" />
+                    </a>
+                    <div class=" text-center mt-2"><p> &euro;@p.pret </p></div>
+                    <div class="container text-secondary text-center" style="">
+                        <p> @p.model </p>
+                    </div>
+                    <div class="float-right overflow-auto">
+                        <a class="btn btn-dark" href="~/CosProd/Add?id=@p.Id&&typeProduct=0">
+                            <img width="30" height="30" border-radius="50%" src="~/addCart.png" />
+                        </a>
+
                     </div>
                     <div class="float-right overflow-auto">
                         <a class="btn btn-dark" href="~/Products/Details/@p.Id">
