@@ -1,6 +1,6 @@
 ﻿namespace DiplomaOnlineShop.Models
 {
-    public class User
+    public class AdminUser
     {
         public int id { get; set; }
         public string login { get; set; }

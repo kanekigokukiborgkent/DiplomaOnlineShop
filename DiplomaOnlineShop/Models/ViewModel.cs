@@ -11,6 +11,7 @@ namespace DiplomaOnlineShop.Models
     {
        /* public List<Telephones> viewTelephones { get; set; }*/
         public List<Products> viewProducts { get; set; }
+        public List<AdminUser> viewAdminUsers{ get; set; }
 
 
     }
