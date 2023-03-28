@@ -10,7 +10,7 @@ namespace DiplomaOnlineShop.Models
     {
         /*public DbSet<Telephones> telephones{ get; set; }*/
         public DbSet<Products> products{ get; set; }
-        public DbSet<User> users{ get; set; }
+        public DbSet<AdminUser> AdminUsers{ get; set; }
          public ProductContext(DbContextOptions<ProductContext> options)
              : base(options)
          {

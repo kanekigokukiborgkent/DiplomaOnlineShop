@@ -27,12 +27,37 @@ namespace DiplomaOnlineShop.Controllers
             _logger = logger;
             appEnvironment = _appEnvironment;
         }
+        private async Task Authenticate(string userName)
+        {
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimsIdentity.DefaultNameClaimType, userName)
+            };
+            ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
+        }
+        [HttpGet]
+        public IActionResult Meniu_manager()
+        {
+            ViewModel obj = new ViewModel();
+            obj.viewProducts = db.products.ToList();
+
+            return View(obj);
+        }
 
         public IActionResult Index()
         {
             return View();
         }
+        public IActionResult Details(int id)
+        {
+            ViewModel obj = new ViewModel();
+            obj.viewProducts = db.products.ToList();
 
+            Products v = new Products();
+            v = obj.viewProducts.FirstOrDefault(x => x.Id == id);
+            return View(v);
+        }
         public IActionResult Privacy()
         {
             return View();
@@ -44,37 +69,28 @@ namespace DiplomaOnlineShop.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        private async Task Authenticate(string userName)
-        {
-            var claims = new List<Claim>
-            {
-                new Claim(ClaimsIdentity.DefaultNameClaimType, userName)
-            };
-            ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
-        }
-
+        [HttpGet]
         public IActionResult Loghin()
         {
-            return View();
+            ViewModel obj = new ViewModel();
+            obj.viewAdminUsers = db.AdminUsers.ToList();
+            return View(obj.viewAdminUsers[0]);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Loghin(User ad)
+        public async Task<IActionResult> Loghin(AdminUser ad)
         {
-
             if (ModelState.IsValid)
             {
-                User user = await db.users.FirstOrDefaultAsync(u => u.login == ad.login && u.password == ad.password);
+                AdminUser user = await db.AdminUsers.FirstOrDefaultAsync(u => u.login == ad.login && u.password == ad.password);
                 if (user != null)
                 {
                     await Authenticate(ad.login);
-
-                    return RedirectToAction("Index", "Telephons"); 
+                    return RedirectToAction("Index", "AdminUser"); 
                 }
-            } 
-            return View();
+            }
+            return RedirectToAction("Index", "AdminUser");
         }
     }
 }
