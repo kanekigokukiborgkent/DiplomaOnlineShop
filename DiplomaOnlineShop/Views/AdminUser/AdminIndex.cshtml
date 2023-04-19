@@ -1,64 +1,39 @@
 ﻿@using DiplomaOnlineShop.Models
 @model ViewModel
 @{
-    ViewData["Title"] = "Home";
+    ViewData["AdminTitle"] = "Admin Home Page";
 }
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Online Shop</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <style>
-        html {
-            box-sizing: border-box;
-        }
-        *, *:before, *:after {
-            box-sizing: inherit;
-        }
-        .column {
-            float: left;
-            width: 33.3%;
-            margin-bottom: 16px;
-            padding: 0 8px;
-        }
-        .card {
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-        }
-
-        .container {
-            padding: 0 16px;
-        }
-
-            .container::after, .row::after {
-                content: "";
-                clear: both;
-                display: table;
-            }
-
-        .title {
-            color: grey;
-        }
-
-        .button {
-            border: none;
-            outline: 0;
-            display: inline-block;
-            padding: 8px;
-            color: white;
-            background-color: #000;
-            text-align: center;
-            cursor: pointer;
-            width: 100%;
-        }
-
-            .button:hover {
-                background-color: #555;
-            }
-
         .example {
             margin: 1em 0;
             text-align: center;
         }
+
+            .example img {
+                width: 30vw;
+                height: 30vw;
+            }
+
+        .example-cover img {
+            object-fit: cover;
+        }
+
+        .example-contain img {
+            object-fit: contain;
+        }
     </style>
+</head>
+<body>
+
     <p class="text-white font-weight-bold " style="text-align:center;font-size:40px">Colectia de produse</p>
     <div class="row mt-5 mt-2">
         @{
-            foreach (var p in Model.viewProducts)   
+            foreach (var p in Model.viewProducts)
             {
                 <div class="col-lg-4 mt-3  pb-5" style="">
                     <div class=" text-dark p-3 pb-5" style="background-color: rgba(255, 255, 255,0.7); border-radius: 13px; width: 13vw; height: 20vw; ">
@@ -77,29 +52,18 @@
                             <img width="30" height="30" border-radius="50%" src="~/addCart.png" />
                         </div>
                         <div class="float-right overflow-auto">
-                            <a class="btn btn-dark" href="~/Home/Details/@p.Id"> </a>
+                            <a class="btn btn-dark" href="~/AdminUser/Details/@p.Id"> </a>
                             <img width="30" height="30" border-radius="50%" src="~/ShowDetail.png" />
                         </div>
                     </div>
                 </div>
             }
-          
+
         }
     </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+</body>
+</html>
 
 
 

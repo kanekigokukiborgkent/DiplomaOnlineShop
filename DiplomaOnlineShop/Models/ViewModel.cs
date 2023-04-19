@@ -9,7 +9,6 @@ namespace DiplomaOnlineShop.Models
 {
     public class ViewModel
     {
-       /* public List<Telephones> viewTelephones { get; set; }*/
         public List<Products> viewProducts { get; set; }
         public List<AdminUser> viewAdminUsers{ get; set; }
 

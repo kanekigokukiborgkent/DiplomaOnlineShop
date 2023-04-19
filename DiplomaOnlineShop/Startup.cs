@@ -1,13 +1,8 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using DiplomaOnlineShop.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -30,7 +25,7 @@ namespace DiplomaOnlineShop
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
               .AddCookie(options => 
               {
-                  options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Products/Index");
+                  options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Home/Index");
               });
             services.AddControllersWithViews();
  
@@ -58,7 +53,9 @@ namespace DiplomaOnlineShop
 
             app.UseRouting();
 
-            app.UseAuthorization();
+
+            app.UseAuthentication();     
+            app.UseAuthorization();     
 
             app.UseEndpoints(endpoints =>
             {
