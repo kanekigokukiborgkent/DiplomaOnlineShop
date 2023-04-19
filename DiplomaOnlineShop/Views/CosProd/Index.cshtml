@@ -1,5 +1,4 @@
-﻿@model DiplomaOnlineShop.ViewsModels.Device;
-
+﻿@model DiplomaOnlineShop.ViewModels.ViewModels;
 @{
     ViewData["Title"] = "CosProd";
 }
@@ -19,9 +18,9 @@
                 </div><div></div>
                
                 @{
-                    if (Model.products.Any())
+                    if (Model.ViewProducts.Any())
                     {
-                        foreach (var p in Model.products)
+                        foreach (var p in Model.ViewProducts)
                         {
                            
                             string cale = p.Path + "" + p.Img;

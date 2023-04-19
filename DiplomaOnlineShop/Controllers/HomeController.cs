@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -36,19 +35,18 @@ namespace DiplomaOnlineShop.Controllers
             ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
         }
-        [HttpGet]
-        public IActionResult Meniu_manager()
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index", "Home");
+        }
+        public IActionResult Index()  
         {
             ViewModel obj = new ViewModel();
             obj.viewProducts = db.products.ToList();
-
             return View(obj);
         }
-
-        public IActionResult Index()
-        {
-            return View();
-        }
+       
         public IActionResult Details(int id)
         {
             ViewModel obj = new ViewModel();
@@ -83,14 +81,14 @@ namespace DiplomaOnlineShop.Controllers
         {
             if (ModelState.IsValid)
             {
-                AdminUser user = await db.AdminUsers.FirstOrDefaultAsync(u => u.login == ad.login && u.password == ad.password);
-                if (user != null)
+                AdminUser adminUser = await db.AdminUsers.FirstOrDefaultAsync(u => u.login == ad.login && u.password == ad.password);
+                if (adminUser != null)
                 {
                     await Authenticate(ad.login);
-                    return RedirectToAction("Index", "AdminUser"); 
+                    return RedirectToAction("AdminIndex", "AdminUser");
                 }
             }
-            return RedirectToAction("Index", "AdminUser");
+            return View();
         }
     }
 }
