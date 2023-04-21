@@ -1,4 +1,4 @@
-﻿@model DiplomaOnlineShop.ViewModels.ViewModels;
+﻿@model IEnumerable<DiplomaOnlineShop.Models.Products>;
 @{
     ViewData["Title"] = "CosProd";
 }
@@ -16,15 +16,12 @@
 
                     </div>
                 </div><div></div>
-               
                 @{
-                    if (Model.ViewProducts.Any())
+                    if (Model.Any())
                     {
-                        foreach (var p in Model.ViewProducts)
+                        foreach (var p in Model)
                         {
-                           
                             string cale = p.Path + "" + p.Img;
-
                             <div class="row m-2 justify-content-around" style="max-height:120px">
                                 <div class="col-2 ">
                                     <img class="w-100 h-100" src="@cale" />
@@ -37,7 +34,7 @@
                                     <p>&euro; @p.pret</p>
                                 </div>
                                 <div class="col-2 text-right text-white">
-                                    <a href="~/CosProd/delete?id=@p.Id&&typeProduct=1" onMouseOver="this.style.color='white'"
+                                    <a href="~/CosProd/delete?id=@p.Id" onMouseOver="this.style.color='white'"
                            onMouseOut="this.style.color='gray'"> &#10005;</a>
 
                                 </div>
@@ -57,6 +54,48 @@
                 <a class="" href="~/Home/index" onMouseOver="this.style.color='white'"
                    onMouseOut="this.style.color='gray'">&larr; Intoarce-te la produse</a>
             </div>
+        </div>
+        <div class="col-lg-4 bg-white rounded">
+            <div class="row">
+                <div class="col-5 mt-2 text-secondary"><h6>Suma totala </h6></div>
+              @*  <div class="col-6 text-right mt-2 text-danger"><h6>&euro; @suma</h6></div>*@
+            </div>
+            <div class="row justify-content-center">
+                <form method="post" class="form-horizontal  col-10 justify-content-center " role="form">
+                    <div class="form-group text-center">
+                        <label for="Name" class="col control-label text-secondary">Nume</label>
+                        <div class="col">
+                            <input type="text" name="Name" class="form-control bg-dark text-white text-center" />
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <label for="Oraș" class="col control-label text-secondary">Oraș</label>
+                        <div class="col">
+                            <input type="text" name="Oraș" class="form-control bg-dark text-white" />
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <label for="Strada" class="col control-label text-secondary">Strada</label>
+                        <div class="col">
+                            <input type="text" name="Strada" class="form-control bg-dark text-white" />
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <label class="col control-label text-secondary ">Număr de telefon</label>
+                        <div class="col">
+                            <input type="number" name="Numar_de_telefon" class="form-control rounded bg-dark text-white" />
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form-group text-center">
+                        <div class="col">
+                            <input type="submit" class="btn btn-danger text-white" value="Cumpara" />
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
         </div>
     </div>
 </div>

@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["AdminTitle"]</title>
     <link rel="icon" type="image/x-icon" href="~/favicon.PNG">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
@@ -12,34 +11,29 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" >
             <div class="container">
 
                 <div id="logo">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="AdminUser" asp-action="AdminIndex">
                         <img src="~/Logo.PNG" style="height:40px; margin-right:10px" />
                     </a>
                 </div>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
+                      
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="AdminUser" asp-action="AdminIndex">Products</a>
+                        </li>
+                     
+                        <li class="nav-item">
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="AdminUser" asp-action="Add">AddProdus</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="AdminUser" asp-action="Ordere">Ordere</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-     <div class="container body-content">
-        @RenderBody()
-            <hr />
-            </div>
+            @RenderBody()
+    </div>
 
 </body>
 </html>

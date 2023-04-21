@@ -19,6 +19,7 @@ using System.Diagnostics;
 using System.Security.Claims;
 using DiplomaOnlineShop.Controllers;
 using DiplomaOnlineShop.ViewModels;
+using Magazin.Models;
 
 namespace Magazin.Controllers
 {
@@ -39,12 +40,29 @@ namespace Magazin.Controllers
 
         [HttpGet]
         [Authorize]
-        public IActionResult AdminIndex()
+        public IActionResult AdminIndex(string searchString)
         {
             ViewModel obj = new ViewModel();
             obj.viewProducts = db.products.ToList();
-            return View(obj);
+
+            if (obj.viewProducts == null)
+            {
+                return Problem("Products is null.");
+            }
+            var productss = from m in obj.viewProducts
+                           select m;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                productss = productss.Where(s => s.model!.Contains(searchString));
+            }
+            return View(productss.ToList());
         }
+        /* public IActionResult AdminIndex()
+         {            ViewModel obj = new ViewModel();
+             obj.viewProducts = db.products.ToList();
+             return View(obj);
+
+         }*/
 
         public IActionResult Details(int id)
         {
@@ -175,11 +193,45 @@ namespace Magazin.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public IActionResult Orders()
+        {
+            IEnumerable<ProdOrder> obj = new List<ProdOrder>();
+            obj = join();
+
+            return View(obj);
+        }
+
+
+
         public IActionResult Index()
         {
             ViewModels viewModels = new ViewModels();
             viewModels.ViewProducts = db.products.ToList();
             return View(viewModels);
+        }
+
+        public List<ProdOrder> join()
+        {
+            List<ProdNamesOrders> first = new List<ProdNamesOrders>();
+            first = db.ProductOrders.Join(db.products,
+                u => u.OrderId,
+                p => p.Id,
+                (u, p) => new ProdNamesOrders
+                { Id = u.Id, OrderId = u.OrderId, Order = u.Order, Produs = p.model }
+                ).ToList();
+            // db.SaveChanges();
+            List<ProdOrder> last = new List<ProdOrder>();
+            last = first.Join(db.Orders,
+                p => p.OrderId,
+                u => u.OrderId,
+                (p, u) => new ProdOrder
+                {
+                    Id = p.Id,
+                    Produs = p.Produs,
+                    Order = u.Name
+                }
+                ).ToList();
+            return last;
         }
     }
 }
