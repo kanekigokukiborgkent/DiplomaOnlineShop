@@ -41,21 +41,18 @@ namespace Magazin.Controllers
 
         public IActionResult Index()
         {
-            ViewModels viewModels = new ViewModels();
-            viewModels.ViewProducts = products;
-            return View(viewModels);
+            return View(products);
         }
-        public IActionResult Delete(int? id, int typeProduct)
+        public IActionResult Delete(int? id)
         {
             if (id == null) return RedirectToAction("Index", "CosProd");
-            if (typeProduct == 0)
+            else
             {
                 Products obj = new();
                 obj = products.FirstOrDefault(u => u.Id == id);
                 products.Remove(obj);
                 return RedirectToAction("Index", "CosProd");
             }
-            return RedirectToAction("Index", "CosProd");
         }
 
 
@@ -65,34 +62,29 @@ namespace Magazin.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult FormOrder(Order order)
+        public IActionResult Index(Order order)
         {
             if (products != null)
             {
-                 
                     db.Orders.Add(order);
                     db.SaveChanges();
-
-                    ProductOrder A = new ProductOrder();
+                ProductOrder A = new ProductOrder();
                     List<ProductOrder> obj = new List<ProductOrder>();
-
-
                     foreach (var el in products)
                     {
-
                         A.ProductsId = el.Id;
                         A.OrderId = order.OrderId;
-                        ProductOrder B = new ProductOrder { OrderId = A.OrderId, ProductsId = A.ProductsId };
+                    ProductOrder B = new ProductOrder { OrderId = A.OrderId, ProductsId = A.ProductsId };
                         db.ProductOrders.Add(B);
                         db.SaveChanges();
                     }
+                    products = new List<Products>();
+                return RedirectToAction("Index", "CosProd");
 
-                products = new List<Products>();
-
-                    return RedirectToAction("Index", "Home");
-                }
-            
+            }
+        
             return View(products);
         }
+
     }
 }

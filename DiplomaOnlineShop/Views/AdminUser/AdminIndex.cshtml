@@ -1,5 +1,5 @@
 ﻿@using DiplomaOnlineShop.Models
-@model ViewModel
+@model List<Products>
 @{
     ViewData["AdminTitle"] = "Admin Home Page";
 }
@@ -13,27 +13,23 @@
             margin: 1em 0;
             text-align: center;
         }
-
             .example img {
-                width: 30vw;
-                height: 30vw;
+                width: 15vw;
+                height: 25vw;
             }
-
-        .example-cover img {
-            object-fit: cover;
-        }
-
-        .example-contain img {
-            object-fit: contain;
-        }
     </style>
 </head>
 <body>
-
     <p class="text-white font-weight-bold " style="text-align:center;font-size:40px">Colectia de produse</p>
     <div class="row mt-5 mt-2">
+        <form asp-controller="AdminUser" asp-action="AdminIndex">
+            <p>
+                Name: <input type="text" name="SearchString" />
+                <input type="submit" value="Filter" />
+            </p>
+        </form>
         @{
-            foreach (var p in Model.viewProducts)
+            foreach (var p in Model)
             {
                 <div class="col-lg-4 mt-3  pb-5" style="">
                     <div class=" text-dark p-3 pb-5" style="background-color: rgba(255, 255, 255,0.7); border-radius: 13px; width: 13vw; height: 20vw; ">
@@ -48,22 +44,14 @@
                             <p> @p.model </p>
                         </div>
                         <div class="float-right overflow-auto">
-                            <a class="btn btn-dark" href="~/CosProd/Add?id=@p.Id"></a>
-                            <img width="30" height="30" border-radius="50%" src="~/addCart.png" />
-                        </div>
-                        <div class="float-right overflow-auto">
-                            <a class="btn btn-dark" href="~/AdminUser/Details/@p.Id"> </a>
-                            <img width="30" height="30" border-radius="50%" src="~/ShowDetail.png" />
+                            <a class="btn btn-dark" href="~/AdminUser/Details/@p.Id">
+                                <img width="30" height="30" border-radius="50%" src="~/ShowDetail.png" /> 
+                            </a>
                         </div>
                     </div>
                 </div>
             }
-
         }
     </div>
-
 </body>
 </html>
-
-
-
