@@ -18,7 +18,6 @@ using Microsoft.AspNetCore.Authentication;
 using System.Diagnostics;
 using System.Security.Claims;
 using DiplomaOnlineShop.Controllers;
-using DiplomaOnlineShop.ViewModels;
 using Magazin.Models;
 
 namespace Magazin.Controllers
@@ -57,12 +56,7 @@ namespace Magazin.Controllers
             }
             return View(productss.ToList());
         }
-        /* public IActionResult AdminIndex()
-         {            ViewModel obj = new ViewModel();
-             obj.viewProducts = db.products.ToList();
-             return View(obj);
-
-         }*/
+       
 
         public IActionResult Details(int id)
         {
@@ -183,13 +177,11 @@ namespace Magazin.Controllers
         public IActionResult AddOrder(int? id, int typeProduct)
         {
             if (id == null) return RedirectToAction("Index", "Home");
-            if (typeProduct == 0)
-            {
+           
                 Products obj = new();
                 obj = db.products.FirstOrDefault(u => u.Id == id);
                 db.products.Add(obj);
-            }
-
+            
             return RedirectToAction("Index", "Home");
         }
 
@@ -205,19 +197,19 @@ namespace Magazin.Controllers
 
         public IActionResult Index()
         {
-            ViewModels viewModels = new ViewModels();
-            viewModels.ViewProducts = db.products.ToList();
+            ViewModel viewModels = new ViewModel();
+            viewModels.viewProducts = db.products.ToList();
             return View(viewModels);
         }
 
         public List<ProdOrder> join()
         {
-            List<ProdNamesOrders> first = new List<ProdNamesOrders>();
-            first = db.ProductOrders.Join(db.products,
-                u => u.OrderId,
+            List<ProductOrder> first = new List<ProductOrder>();
+            first = db.orderProducts.Join(db.products,
+                u => u.ProductsId,
                 p => p.Id,
-                (u, p) => new ProdNamesOrders
-                { Id = u.Id, OrderId = u.OrderId, Order = u.Order, Produs = p.model }
+                (u, p) => new ProductOrder
+                { Id = u.Id, OrderId = u.OrderId, Order = u.Order, Products = p.model, Path = p.Path, Pret = p.pret }
                 ).ToList();
             // db.SaveChanges();
             List<ProdOrder> last = new List<ProdOrder>();
@@ -227,8 +219,12 @@ namespace Magazin.Controllers
                 (p, u) => new ProdOrder
                 {
                     Id = p.Id,
-                    Produs = p.Produs,
-                    Order = u.Name
+                    Produs = p.Products,
+                    Order = u.Name,
+                   Strada = u.Strada,
+                   Oras = u.Oraș,
+                   Numar_Telefon = u.Numar_de_telefon,
+                   Pret = p.Pret
                 }
                 ).ToList();
             return last;

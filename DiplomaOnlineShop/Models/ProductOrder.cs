@@ -13,7 +13,8 @@ namespace Magazin.Models
         public int Id { get; set; }
         public int OrderId { get; set; }
         public Order Order { get; set; }
-        public int ProductsId { get; set; }
-        public Products Products { get; set; }
+        public string Products { get; set; }
+        public string Path { get; set; }
+        public double Pret { get; set; }
     }
 }
