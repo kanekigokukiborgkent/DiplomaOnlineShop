@@ -8,7 +8,9 @@
 <div style="
         margin: 100px;
         padding: 10px;
-       box-shadow: 
+        border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px;
         min-height: 100px;
         padding: 75px;
         border-radius: 20px 20px;
@@ -39,10 +41,7 @@
                 <p class="text-center">Culoare: @Model.culoare</p>
                 <h1 class="text-center" style="font-size:20px"> Pret: @Model.pret &#128; </h1>
                 <p class="text-center">
-                    <a class="btn btn-danger text-white" href="~/Home/Index">Meniu</a>
-                </p>
-                <p class="text-center">
-                    <a class="btn btn-danger text-white" href="~/CosProd/Add?id=@Model.Id&&typeProduct=0">Add Cart</a>
+                    <a class="btn btn-primary" href="~/Home/Index">Meniu</a> <a class="btn btn-primary" href="~/CosProd/Add?id=@Model.Id&&typeProduct=0">Add Cart</a>
                 </p>
             </div>
         }

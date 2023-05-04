@@ -1,6 +1,5 @@
 ﻿@using DiplomaOnlineShop.Models
 @model List<ProdOrder>
-
 @{
     ViewData["Title"] = "Meniu ordere";
 }
@@ -10,11 +9,13 @@
             foreach (var el in Model)
             {
                 <div class="col-2 m-3 p-2 text-center rounded bg-dark" style="">
-
-
-                    <h2> Id: <b class="text-danger">@el.Id</b></h2>
+                    <h2>Id : <b class="text-danger">@el.Id</b></h2>
                     <h4>Produs : <b class="text-danger">@el.Produs </b></h4>
-                    <h6>Cumparator : <b class="text-primary"> @el.Order</b></h6>
+                    <h4>Pret : <b class="text-primary"> @el.Pret</b></h4>
+                    <h6>Cumpărător : <b class="text-primary"> @el.Order</b></h6>
+                    <h6>Oraș : <b class="text-primary"> @el.Oras</b></h6>
+                    <h6>Strada : <b class="text-primary"> @el.Strada</b></h6>
+                    <h6>Numar de telefon : <b class="text-primary"> @el.Numar_Telefon</b></h6>
                 </div>
             }
         }

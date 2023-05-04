@@ -8,15 +8,15 @@
 <div style="
         margin: 100px;
         padding: 10px;
-       background-image: linear-gradient(to right, #46b680 , #347392);
-
-
+        border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px;
         min-height: 100px;
         padding: 75px;
         border-radius: 20px 20px;
 ">
     <div class="row mt-5 " style="
-        color: white;
+        color: black;
         min-height: 100px;
         min-width: 100px;
         font-family: 'Roboto', sans-serif;
@@ -40,11 +40,10 @@
                 <p class="text-center">Garanție: @Model.garanție</p>
                 <p class="text-center">Culoare: @Model.culoare</p>
                 <h1 class="text-center" style="font-size:20px"> Pret: @Model.pret &#128; </h1>
-
                 <p class="text-center">
-                    <a class="btn btn-danger text-white" href="~/AdminUser/AdminIndex"> Meniu</a>
-                    <a class="btn btn-danger text-white" href="~/AdminUser/Modifica/@Model.Id"> Modifica</a>
-                    <a class="btn btn-danger text-white" href="~/AdminUser/Delete/@Model.Id"> Sterge</a>
+                    <a class="btn btn-primary" href="~/AdminUser/AdminIndex">Meniu</a>
+                    <a class="btn btn-primary" href="~/AdminUser/Delete/@Model.Id">Șterge</a>
+                    <a class="btn btn-primary" href="~/AdminUser/Modifica/@Model.Id">Modifică</a>
                 </p>
             </div>
         }

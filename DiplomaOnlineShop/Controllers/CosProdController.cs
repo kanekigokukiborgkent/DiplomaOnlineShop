@@ -1,6 +1,5 @@
 ﻿using DiplomaOnlineShop.Controllers;
 using DiplomaOnlineShop.Models;
-using DiplomaOnlineShop.ViewModels;
 using Magazin.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -68,14 +67,14 @@ namespace Magazin.Controllers
             {
                     db.Orders.Add(order);
                     db.SaveChanges();
-                ProductOrder A = new ProductOrder();
-                    List<ProductOrder> obj = new List<ProductOrder>();
+                    OrderProducts A = new OrderProducts();
+                    List<OrderProducts> obj = new List<OrderProducts>();
                     foreach (var el in products)
                     {
                         A.ProductsId = el.Id;
                         A.OrderId = order.OrderId;
-                    ProductOrder B = new ProductOrder { OrderId = A.OrderId, ProductsId = A.ProductsId };
-                        db.ProductOrders.Add(B);
+                    OrderProducts B = new OrderProducts { OrderId = A.OrderId, ProductsId = A.ProductsId };
+                        db.orderProducts.Add(B);
                         db.SaveChanges();
                     }
                     products = new List<Products>();
