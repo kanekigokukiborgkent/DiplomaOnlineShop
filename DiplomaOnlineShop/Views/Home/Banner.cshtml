@@ -1,0 +1,39 @@
+﻿@using DiplomaOnlineShop.Models
+@model List<Products>
+@{
+    ViewData["Title"] = "Banner";
+}
+<style>
+    .card-body {
+        min-height: 600px;
+        min-width: 600px;
+        margin-right: 5px;
+    }
+
+    .bg-image {
+        height: 50%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+<body>
+    <div class="bg-image">
+        <img src="~/banner.jpg">
+</div>
+ <div class="d-flex flex-row flex-nowrap overflow-auto">
+    @{
+        foreach (var p in Model)
+        {
+            <div class="card card-body card-block mx-2" style="min-width: 300px;">
+              @{
+                                string denumire = p.Path + "" + p.Img;
+                            }
+                            <img src="@denumire">
+                <p><a class="text-dark">@p.model</a></p>
+                <p><a class="text-dark">@p.pret</a></p>
+            </div>
+        }
+    }
+    </div>
+    </body>

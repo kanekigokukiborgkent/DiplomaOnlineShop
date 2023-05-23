@@ -6,7 +6,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using DiplomaOnlineShop.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
-
 namespace DiplomaOnlineShop
 {
     public class Startup
@@ -15,13 +14,10 @@ namespace DiplomaOnlineShop
         {
             Configuration = configuration;
         }
-
         public IConfiguration Configuration { get; }
-
         public void ConfigureServices(IServiceCollection services)
         {
             string connection = Configuration.GetConnectionString("DefaultConnection");
-
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
               .AddCookie(options => 
               {
@@ -32,10 +28,8 @@ namespace DiplomaOnlineShop
         services.AddDbContext<ProductContext>(options =>
                 options.UseSqlServer(connection));
         
-
             services.AddControllersWithViews();
         }
-
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -52,7 +46,6 @@ namespace DiplomaOnlineShop
             app.UseStaticFiles();
 
             app.UseRouting();
-
 
             app.UseAuthentication();     
             app.UseAuthorization();     
