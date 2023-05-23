@@ -1,74 +1,33 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-/*a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
-}*/
-
-/* Provide sufficient contrast against white background */
-/*a {
-  color: #0366d6;
+﻿/* _Layout.cshtml */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+li {
+    float: left;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}*/
+    li .last {
+        float: right;
+    }
 
-/* Sticky footer styles
--------------------------------------------------- */
-/*html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
 
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
+        li a:hover {
+            background-color: #111;
+        }
 
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
 
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
-}*/
-
-/* Sticky footer styles
--------------------------------------------------- */
-/*html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {*/
-  /* Margin bottom by footer height */
-  /*margin-bottom: 60px;
-}
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;*/ /* Vertically center the text there */
-/*}*/
 .site-footer {
     background-color: #26272b;
     padding: 45px 0 20px;
@@ -143,22 +102,6 @@ body {*/
     margin: 0
 }
 
-@media (max-width:991px) {
-    .site-footer [class^=col-] {
-        margin-bottom: 30px
-    }
-}
-
-@media (max-width:767px) {
-    .site-footer {
-        padding-bottom: 0
-    }
-
-        .site-footer .copyright-text, .site-footer .social-icons {
-            text-align: center
-        }
-}
-
 .social-icons {
     padding-left: 0;
     margin-bottom: 0;
@@ -194,38 +137,114 @@ body {*/
         transition: all .2s linear
     }
 
-        .social-icons a:active, .social-icons a:focus, .social-icons a:hover {
-            color: #fff;
-            background-color: #29aafe
-        }
-
     .social-icons.size-sm a {
         line-height: 34px;
         height: 34px;
         width: 34px;
         font-size: 14px
     }
+.topnav-right {
+    float: right;
+}
 
-    .social-icons a.facebook:hover {
-        background-color: #3b5998
+/* Details.cshtml */
+
+.detailCss {
+    margin: 100px;
+    padding: 10px;
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 5px 10px;
+    min-height: 100px;
+    padding: 75px;
+    border-radius: 20px 20px;
+}
+.detailCss1 {
+    color: black;
+    min-height: 100px;
+    min-width: 100px;
+    font-family: 'Roboto', sans-serif;
+}
+/* Loghin.cshtml Home*/
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-bottom: 0.4em;
+    background-color: #26272b;
+    border-radius: 25px;
+    transition: .4s ease-in-out;
+}
+
+    .form:hover {
+        transform: scale(1.05);
+        border: 1px solid #333;
     }
 
-    .social-icons a.twitter:hover {
-        background-color: #00aced
+#heading {
+    text-align: center;
+    margin: 2em;
+    color: rgb(255, 255, 255);
+    font-size: 1.2em;
+}
+
+.field {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    border-radius: 25px;
+    padding: 0.6em;
+    border: none;
+    outline: none;
+    color: white;
+    background-color: #26272b;
+    box-shadow: inset 2px 5px 10px #333;
+}
+
+.input-icon {
+    height: 1.3em;
+    width: 1.3em;
+    fill: white;
+}
+
+.input-field {
+    background: none;
+    border: none;
+    outline: none;
+    width: 100%;
+    color: #d3d3d3;
+}
+
+.form .btn {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 2.5em;
+}
+
+.button1 {
+    padding: 0.5em;
+    padding-left: 1.1em;
+    padding-right: 1.1em;
+    border-radius: 5px;
+    margin-right: 0.5em;
+    border: none;
+    outline: none;
+    transition: .4s ease-in-out;
+    background-color: #26272b;
+    color: white;
+}
+
+    .button1:hover {
+        background-color: #333;
+        color: white;
     }
 
-    .social-icons a.linkedin:hover {
-        background-color: #007bb6
-    }
-
-    .social-icons a.dribbble:hover {
-        background-color: #ea4c89
-    }
-
-@media (max-width:767px) {
-    .social-icons li.title {
-        display: block;
-        margin-right: 0;
-        font-weight: 600
-    }
+/*Privacy.cshtml  Home*/
+.privacyCss * {
+    background-color: white;
+    color: black;
 }

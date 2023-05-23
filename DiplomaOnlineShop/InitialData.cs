@@ -1,10 +1,6 @@
 ﻿using DiplomaOnlineShop.Models;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Intrinsics.Arm;
-using System.Threading.Tasks;
 
 namespace DiplomaOnlineShop
 {
@@ -20,7 +16,6 @@ namespace DiplomaOnlineShop
             new Products {producător = "Xiaomi", model="Redmi Note 4 S",      pret = 4392, diagonala_ecranului = 15, rezolutia_ecranului = "2724x1783", memorie_incorporată = 29,  RAM = 3, camera_din_spate = 11, camera_frontala = 4, capacitatea_bateriei = 2530, garanție = 38, culoare = "Alb",        Img ="phone2.png", Path="/img/Produse/Telephons/" , category = "phone"},
             new Products {producător = "Apple", model="IPhone 4 Plus",        pret = 3302, diagonala_ecranului = 17, rezolutia_ecranului = "2824x1884", memorie_incorporată = 34,  RAM = 5, camera_din_spate = 13, camera_frontala = 3, capacitatea_bateriei = 6353, garanție = 36, culoare = "Alb",        Img ="phone3.jpg", Path="/img/Produse/Telephons/" , category = "phone"},
             new Products {producător = "Motorola", model="Notri 7J",          pret = 2741, diagonala_ecranului = 13, rezolutia_ecranului = "2273x1365", memorie_incorporată = 23,  RAM = 4, camera_din_spate = 12, camera_frontala = 1, capacitatea_bateriei = 6321, garanție = 33, culoare = "Alb",        Img ="phone4.jpg", Path="/img/Produse/Telephons/" , category = "phone"}
-              
    };
         public static List<AdminUser> AdminUsers = new List<AdminUser>
         {

@@ -41,33 +41,7 @@ namespace DiplomaOnlineShop.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Index", "Home");
         }
-       /* public IActionResult Index()  
-        {
-            ViewModel obj = new ViewModel();
-            obj.viewProducts = db.products.ToList();
-           
-
-
-            ViewModel obj = new ViewModel();
-            obj.viewProducts = db.products.ToList();
-            var v = obj.viewProducts.Select(x => x.model);
-
-            var productss = from m in obj.viewProducts
-                            select m;
-
-
-            if (productss == null)
-            {
-                return Problem("Entity set 'db.product'  is null.");
-            }
-
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                productss = productss.Where(s => s.model!.Contains(searchString));
-            }
-
-            return View(obj);
-        }*/
+      
         public IActionResult Index(string searchString)
         {
             ViewModel obj = new ViewModel();
@@ -88,6 +62,19 @@ namespace DiplomaOnlineShop.Controllers
 
             return View(products.ToList());
         }
+        public IActionResult Banner()
+        {
+            ViewModel obj = new ViewModel();
+            obj.viewProducts = db.products.ToList();
+
+            if (obj.viewProducts == null)
+            {
+                return Problem("Entity set 'MvcMovieContext.Movie'  is null.");
+            }
+            var products = from m in obj.viewProducts
+                           select m;
+            return View(products.ToList());
+        }
         public IActionResult Details(int id)
         {
             ViewModel obj = new ViewModel();
@@ -98,6 +85,10 @@ namespace DiplomaOnlineShop.Controllers
             return View(v);
         }
         public IActionResult Privacy()
+        {
+            return View();
+        } 
+        public IActionResult AboutUs()
         {
             return View();
         }

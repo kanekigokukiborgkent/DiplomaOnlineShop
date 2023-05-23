@@ -4,9 +4,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
-
-
-
 namespace DiplomaOnlineShop
 {
     public class Program
@@ -17,7 +14,6 @@ namespace DiplomaOnlineShop
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
-
                 try
                 {
                     var context = services.GetRequiredService<ProductContext>();
@@ -31,7 +27,6 @@ namespace DiplomaOnlineShop
             }
             host.Run();
         }
-
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
