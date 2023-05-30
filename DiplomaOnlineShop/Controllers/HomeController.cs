@@ -54,30 +54,13 @@ namespace DiplomaOnlineShop.Controllers
 
             var products= from m in obj.viewProducts
                          select m;
-            if (String.IsNullOrEmpty(searchString))
-            {
-                return View(products.ToList());
-            }
-            else if (!String.IsNullOrEmpty(searchString))
+           
+            if (!String.IsNullOrEmpty(searchString))
             {
                     products = products.Where(s => s.model!.Contains(searchString));
-                
             }
-            else if ( PriceMin != ' ' || PriceMax != ' ')
-            {
-                products = products.Where(s => s.pret >= PriceMin && s.pret <= PriceMax );
-            }
-            
-           //else if ((String.IsNullOrEmpty(searchString) && PriceMin != ' '))
-           // {
-           //     products = products.Where(s => s.pret >= PriceMin );
-           // }
-            //else if((String.IsNullOrEmpty(searchString) && (PriceMin != ' ' && PriceMax != ' '))){
-            //    products = products.Where(s => s.pret >= PriceMin || s.pret <= PriceMax);
-            //}
-
+           
             return View(products.ToList());
-
         }
         public IActionResult Banner()
         {
