@@ -248,3 +248,55 @@ li {
     background-color: white;
     color: black;
 }
+
+/*Banner*/
+.card-body {
+    min-height: 300px;
+    min-width: 300px;
+    margin-right: 5px;
+}
+
+.carousel-inner {
+    border-radius: 50px;
+    /*width: auto;*/
+    max-width: 1110px;
+    max-height: 575px;
+}
+
+.carousel-content {
+    /*border-radius:50px;*/
+    color: white;
+    display: flex;
+    text-align: center;
+}
+
+.imageSlider {
+    width: 1110px;
+    height: 575px;
+}
+
+
+/*  index.cshtml    home*/
+.item2 {
+    grid-area: menu;
+}
+
+.item3 {
+    grid-area: main;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-areas:
+        'menu main main main main main';
+    gap: 10px;
+    background-color: white;
+    padding: 10px;
+}
+
+    .grid-container > div {
+        background-color: rgba(255, 255, 255, 0.8);
+        text-align: center;
+        padding: 20px 0;
+        font-size: 30px;
+    }

@@ -18,21 +18,21 @@
 
         .carousel-inner {
             border-radius: 50px;
-            width: auto;
-            height: 1280px;
-            max-height: 500px;
+            /*width: auto;*/
+            max-width: 1110px;
+            max-height: 575px;
         }
 
         .carousel-content {
-            border-radius:50px;
+            /*border-radius:50px;*/
             color: white;
             display: flex;
             text-align: center;
         }
 
         .imageSlider{
-            width: 1280px;
-            height: 500px;
+            width: 1110px;
+            height: 575px;
         }
     </style>
 </head>
@@ -47,89 +47,69 @@
                 <li data-target="#myCarousel" data-slide-to="3"></li>
                 <li data-target="#myCarousel" data-slide-to="4"></li>
                 <li data-target="#myCarousel" data-slide-to="5"></li>
-                <li data-target="#myCarousel" data-slide-to="6"></li>
             </ol>
             <!-- Wrapper for slides -->
-
             <div class="carousel-inner" role="listbox">
-
                 <div class="item active">
                     <div class="carousel-content">
                         <div style="margin: 0 auto">
                             <p>
-                                <img alt="The 1st Message." src="~/banner.jpg"
+                                <img alt="The 1st Message." src="~/bannerphotoes/banner1.PNG"
                                     class ="imageSlider" />
                             </p>
                         </div>
                     </div>
                 </div>
-
                 <div class="item">
                     <div class="carousel-content">
                         <div style="margin: 0 auto">
                             <p>
-                                <img alt="The 2nd Message." src="~/banner1.jpg"
+                                <img alt="The 2nd Message." src="~/bannerphotoes/banner2.JPG"
                                      class="imageSlider" />
                             </p>
                         </div>
                     </div>
                 </div>
-                
                 <div class="item">
                     <div class="carousel-content">
                         <div style="margin: 0 auto">
                             <p>
-                                <img alt="The 2nd Message." src="~/banner2.jpg"
+                                <img alt="The 3nd Message." src="~/bannerphotoes/banner3.JPG"
                                      class="imageSlider" />
                             </p>
                         </div>
                     </div>
                 </div>
-
                 <div class="item">
                     <div class="carousel-content">
                         <div style="margin: 0 auto">
                             <p>
-                                <img alt="The 2nd Message." src="~/banner3.jpg"
+                                <img alt="The 4nd Message." src="~/bannerphotoes/banner4.JPG"
                                      class="imageSlider" />
                             </p>
                         </div>
                     </div>
                 </div>
-                
                 <div class="item">
                     <div class="carousel-content">
-                        <div style="margin: 0 auto">
+                        <div style="margin: 0">
                             <p>
-                                <img alt="The 2nd Message." src="~/banner4.jpg"
+                                <img alt="The 5nd Message." src="~/bannerphotoes/banner5.JPG"
                                      class="imageSlider" />
                             </p>
                         </div>
                     </div>
                 </div>
-                
                 <div class="item">
                     <div class="carousel-content">
-                        <div style="margin: 0 auto">
+                        <div style="margin: 0">
                             <p>
-                                <img alt="The 2nd Message." src="~/banner5.jpg"
+                                <img alt="The 6nd Message." src="~/bannerphotoes/banner6.JPG"
                                      class="imageSlider" />
                             </p>
                         </div>
                     </div>
                 </div>
-                
-                <div class="item">
-                    <div class="carousel-content">
-                        <div style="margin: 0 auto">
-                            <p>
-                                <img alt="The 2nd Message." src="~/banner6.jpg"
-                                     class="imageSlider" />
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
             </div>
 
             <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev" style="border-radius:50px">
@@ -157,6 +137,7 @@
     @{
         foreach (var p in Model)
         {
+            if (p.category == "tablet"){
             <div class="card card-body card-block mx-2" >
               @{
                                 string denumire = p.Path + "" + p.Img;
@@ -166,7 +147,24 @@
                 <p><a class="text-dark">@p.pret</a></p>
             </div>
         }
-    }
+    }}
+    </div> 
+    
+    <div class="d-flex flex-row flex-nowrap overflow-auto">
+    @{
+        foreach (var p in Model)
+        {
+            if (p.category == "phone"){
+            <div class="card card-body card-block mx-2" >
+              @{
+                                string denumire = p.Path + "" + p.Img;
+                            }
+                            <img src="@denumire">
+                <p><a class="text-dark">@p.model</a></p>
+                <p><a class="text-dark">@p.pret</a></p>
+            </div>
+        }
+    }}
     </div>
 </body>
 </html>
