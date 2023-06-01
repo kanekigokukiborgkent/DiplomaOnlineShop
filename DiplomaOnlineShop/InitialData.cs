@@ -29,7 +29,7 @@ namespace DiplomaOnlineShop
    };
         public static List<AdminUser> AdminUsers = new List<AdminUser>
         {
-            new AdminUser {login="nicu", password="12345"}
+            new AdminUser {login="maxim", password="12345"}
           };
         public static void Initialize(ProductContext db)
         {

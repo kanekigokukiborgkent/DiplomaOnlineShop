@@ -21,7 +21,7 @@ namespace DiplomaOnlineShop
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
               .AddCookie(options => 
               {
-                  options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Home/Index");
+                  options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Home/Banner");
               });
             services.AddControllersWithViews();
  
@@ -54,7 +54,7 @@ namespace DiplomaOnlineShop
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Banner}/{id?}");
             });
         }
     }
