@@ -20,7 +20,6 @@ namespace DiplomaOnlineShop.Controllers
 
         private readonly ILogger<HomeController> _logger;
         IWebHostEnvironment appEnvironment;
-
         public HomeController(ProductContext context, ILogger<HomeController> logger, IWebHostEnvironment _appEnvironment)
         {
             db = context;
@@ -41,8 +40,7 @@ namespace DiplomaOnlineShop.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Index", "Home");
         }
-      
-        public IActionResult Index(string searchString,double PriceMin, double PriceMax)
+        public IActionResult Index(string searchString)
         {
             ViewModel obj = new ViewModel();
             obj.viewProducts = db.products.ToList();
@@ -54,14 +52,13 @@ namespace DiplomaOnlineShop.Controllers
 
             var products= from m in obj.viewProducts
                          select m;
-           
+
             if (!String.IsNullOrEmpty(searchString))
             {
-                    products = products.Where(s => s.model!.Contains(searchString));
+                products = products.Where(s => s.model!.Contains(searchString));
             }
-           
             return View(products.ToList());
-        }
+        }           
         public IActionResult Banner()
         {
             ViewModel obj = new ViewModel();
@@ -87,18 +84,16 @@ namespace DiplomaOnlineShop.Controllers
         public IActionResult Privacy()
         {
             return View();
-        } 
+        }
         public IActionResult AboutUs()
         {
             return View();
         }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
         [HttpGet]
         public IActionResult Loghin()
         {
@@ -106,9 +101,6 @@ namespace DiplomaOnlineShop.Controllers
             obj.viewAdminUsers = db.AdminUsers.ToList();
             return View(obj.viewAdminUsers[0]);
         }
-
-     
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Loghin(AdminUser ad)
@@ -124,8 +116,5 @@ namespace DiplomaOnlineShop.Controllers
             }
             return View();
         }
-
-
-
     }
 }

@@ -12,19 +12,15 @@ namespace Magazin.Controllers
     public class CosProdController : Controller
     {
         ProductContext db;
-
         private readonly ILogger<HomeController> _logger;
         IWebHostEnvironment appEnvironment;
-
         static public List<Products> products = new List<Products>();
-
         public CosProdController(ProductContext context, ILogger<HomeController> logger, IWebHostEnvironment _appEnvironment)
         {
             db = context;
             _logger = logger;
             appEnvironment = _appEnvironment;
         }
-
         public IActionResult Add(int? id, int typeProduct)
         {
             if (id == null) return RedirectToAction("Index", "Home");
@@ -37,7 +33,6 @@ namespace Magazin.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-
         public IActionResult Index()
         {
             return View(products);
@@ -53,8 +48,6 @@ namespace Magazin.Controllers
                 return RedirectToAction("Index", "CosProd");
             }
         }
-
-
         [HttpGet]
         public IActionResult FormOrder()
         {
@@ -83,7 +76,7 @@ namespace Magazin.Controllers
             }
         
             return View(products);
-        }
-
+        }   
+        
     }
 }

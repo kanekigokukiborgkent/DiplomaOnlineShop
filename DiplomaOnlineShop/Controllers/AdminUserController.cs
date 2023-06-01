@@ -56,8 +56,6 @@ namespace Magazin.Controllers
             }
             return View(productss.ToList());
         }
-       
-
         public IActionResult Details(int id)
         {
             ViewModel obj = new ViewModel();
@@ -66,7 +64,6 @@ namespace Magazin.Controllers
             v = obj.viewProducts.FirstOrDefault(x => x.Id == id);
             return View(v);
         }
-
         [HttpGet]
         public IActionResult Delete(int id)
         {
@@ -78,8 +75,6 @@ namespace Magazin.Controllers
             db.SaveChanges();
             return RedirectToAction("AdminIndex");
         }
-
-
         [HttpPost]// Adaugarea Produs in BD
         public async Task<IActionResult> Add(IFormFile uploadedFile, Products produs)
         {
@@ -117,14 +112,11 @@ namespace Magazin.Controllers
             }
             return RedirectToAction("AdminIndex");
         }
-
         [HttpGet]
         public IActionResult Add()
         {
             return View();
         }
-
-
         [HttpPost]
         public async Task<IActionResult> Modifica(IFormFile uploadedFile, Products produs, int id)
         {
@@ -163,7 +155,6 @@ namespace Magazin.Controllers
             }
             return RedirectToAction("AdminIndex");
         }
-
         [HttpGet]
         public IActionResult Modifica(int? id)
         {
@@ -173,7 +164,6 @@ namespace Magazin.Controllers
             obj = db.products.FirstOrDefault(u => u.Id == id);
             return View(obj);
         }
-
         public IActionResult AddOrder(int? id, int typeProduct)
         {
             if (id == null) return RedirectToAction("Index", "Home");
@@ -184,7 +174,6 @@ namespace Magazin.Controllers
             
             return RedirectToAction("Index", "Home");
         }
-
         public IActionResult Orders()
         {
             IEnumerable<ProdOrder> obj = new List<ProdOrder>();
@@ -192,16 +181,12 @@ namespace Magazin.Controllers
 
             return View(obj);
         }
-
-
-
         public IActionResult Index()
         {
             ViewModel viewModels = new ViewModel();
             viewModels.viewProducts = db.products.ToList();
             return View(viewModels);
         }
-
         public List<ProdOrder> join()
         {
             List<ProductOrder> first = new List<ProductOrder>();
@@ -229,5 +214,5 @@ namespace Magazin.Controllers
                 ).ToList();
             return last;
         }
-    }
+    } 
 }

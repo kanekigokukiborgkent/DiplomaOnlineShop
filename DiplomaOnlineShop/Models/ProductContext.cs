@@ -18,7 +18,6 @@ namespace DiplomaOnlineShop.Models
              : base(options)
          {
             Database.EnsureCreated();
-
         }
 
     }
