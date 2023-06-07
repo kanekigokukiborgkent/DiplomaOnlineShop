@@ -1,6 +1,5 @@
 ﻿using Magazin.Models;
 using System.Collections.Generic;
-
 namespace DiplomaOnlineShop.Models
 {
     public class Order

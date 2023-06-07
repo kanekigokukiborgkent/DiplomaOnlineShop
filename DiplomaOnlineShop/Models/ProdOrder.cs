@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace DiplomaOnlineShop.Models
+﻿namespace DiplomaOnlineShop.Models
 {
     public class ProdOrder   //FullOrder
     {
@@ -15,6 +10,5 @@ namespace DiplomaOnlineShop.Models
         public string Numar_Telefon { get; set; }
         public double Pret { get; set; }
         public string Path { get; set; }
-
     }
 }

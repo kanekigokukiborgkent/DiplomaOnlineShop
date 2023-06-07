@@ -1,12 +1,10 @@
 ﻿using DiplomaOnlineShop.Controllers;
 using DiplomaOnlineShop.Models;
-using Magazin.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
-
 namespace Magazin.Controllers
 {
     public class CosProdController : Controller
@@ -30,7 +28,6 @@ namespace Magazin.Controllers
                 obj = db.products.FirstOrDefault(u => u.Id == id);
                 products.Add(obj);
             }
-
             return RedirectToAction("Index", "Home");
         }
         public IActionResult Index()
@@ -72,11 +69,8 @@ namespace Magazin.Controllers
                     }
                     products = new List<Products>();
                 return RedirectToAction("Index", "CosProd");
-
             }
-        
             return View(products);
         }   
-        
     }
 }
