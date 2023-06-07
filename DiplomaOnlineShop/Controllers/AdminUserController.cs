@@ -1,9 +1,7 @@
 ﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using DiplomaOnlineShop.Models;
-using DiplomaOnlineShop;
 using Microsoft.Extensions.Logging;
-using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using System.IO;
 using System.Collections.Generic;
@@ -12,12 +10,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Authorization;
 using System.Data;
 using System;
-using System.Net;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication;
-using System.Diagnostics;
-using System.Security.Claims;
-using DiplomaOnlineShop.Controllers;
 using Magazin.Models;
 
 namespace Magazin.Controllers
@@ -26,17 +18,14 @@ namespace Magazin.Controllers
     {
 
         ProductContext db;
-
         private readonly ILogger<AdminUserController> _logger;
         IWebHostEnvironment appEnvironment;
-
         public AdminUserController(ProductContext context, ILogger<AdminUserController> logger, IWebHostEnvironment _appEnvironment)
         {
             db = context;
             _logger = logger;
             appEnvironment = _appEnvironment;
         }
-
         [HttpGet]
         [Authorize]
         public IActionResult AdminIndex(string searchString)
@@ -75,19 +64,17 @@ namespace Magazin.Controllers
             db.SaveChanges();
             return RedirectToAction("AdminIndex");
         }
-        [HttpPost]// Adaugarea Produs in BD
+        [HttpPost]
         public async Task<IActionResult> Add(IFormFile uploadedFile, Products produs)
         {
             if (uploadedFile != null)
             {
                 string path = "/img/Produse/Tablets/" + uploadedFile.FileName;
-
                 using (var fileStream = new FileStream(appEnvironment.WebRootPath + path, FileMode.Create))
                 {
                     await uploadedFile.CopyToAsync(fileStream);
                 }
                 string way = "/img/Produse/Tablets/";
-
                 Products file = new Products { Img = uploadedFile.FileName, Path = way };
                 Products obj = new Products
                 {
@@ -123,13 +110,11 @@ namespace Magazin.Controllers
             if (uploadedFile != null)
             {
                 string path = "/img/Produse/Tablets/" + uploadedFile.FileName;
-
                 using (var fileStream = new FileStream(appEnvironment.WebRootPath + path, FileMode.Create))
                 {
                     await uploadedFile.CopyToAsync(fileStream);
                 }
                 string way = "/img/Produse/Tablets/";
-
                 Products obj = new Products
                 {
                     producător = produs.producător,
@@ -167,18 +152,15 @@ namespace Magazin.Controllers
         public IActionResult AddOrder(int? id, int typeProduct)
         {
             if (id == null) return RedirectToAction("Index", "Home");
-           
                 Products obj = new();
                 obj = db.products.FirstOrDefault(u => u.Id == id);
                 db.products.Add(obj);
-            
             return RedirectToAction("Index", "Home");
         }
         public IActionResult Orders()
         {
             IEnumerable<ProdOrder> obj = new List<ProdOrder>();
             obj = join();
-
             return View(obj);
         }
         public IActionResult Index()

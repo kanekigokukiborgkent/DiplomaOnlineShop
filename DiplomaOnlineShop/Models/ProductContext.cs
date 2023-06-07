@@ -1,10 +1,5 @@
 ﻿using Magazin.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace DiplomaOnlineShop.Models
 {
     public class ProductContext :DbContext
@@ -19,6 +14,5 @@ namespace DiplomaOnlineShop.Models
          {
             Database.EnsureCreated();
         }
-
     }
 }

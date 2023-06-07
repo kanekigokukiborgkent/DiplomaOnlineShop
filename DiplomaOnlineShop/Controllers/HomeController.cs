@@ -11,13 +11,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using System;
-
 namespace DiplomaOnlineShop.Controllers
 {
     public class HomeController : Controller
     {
         ProductContext db;
-
         private readonly ILogger<HomeController> _logger;
         IWebHostEnvironment appEnvironment;
         public HomeController(ProductContext context, ILogger<HomeController> logger, IWebHostEnvironment _appEnvironment)
@@ -44,15 +42,12 @@ namespace DiplomaOnlineShop.Controllers
         {
             ViewModel obj = new ViewModel();
             obj.viewProducts = db.products.ToList();
-
             if (obj.viewProducts == null)
             {
                 return Problem("Entity set 'MvcMovieContext.Movie'  is null.");
             }
-
             var products= from m in obj.viewProducts
                          select m;
-
             if (!String.IsNullOrEmpty(searchString))
             {
                 products = products.Where(s => s.model!.Contains(searchString));
@@ -63,7 +58,6 @@ namespace DiplomaOnlineShop.Controllers
         {
             ViewModel obj = new ViewModel();
             obj.viewProducts = db.products.ToList();
-
             if (obj.viewProducts == null)
             {
                 return Problem("Entity set 'MvcMovieContext.Movie'  is null.");
@@ -76,7 +70,6 @@ namespace DiplomaOnlineShop.Controllers
         {
             ViewModel obj = new ViewModel();
             obj.viewProducts = db.products.ToList();
-
             Products v = new Products();
             v = obj.viewProducts.FirstOrDefault(x => x.Id == id);
             return View(v);
